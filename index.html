@@ -4,56 +4,72 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dashboard Home</title>
+        <title>Overview - Energy Intel</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
-            body { background-color: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-            .navbar { background-color: #2c3e50; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-            .navbar-brand, .nav-link { color: white !important; }
-            .nav-link:hover { color: #1abc9c !important; }
-            .container { margin-top: 30px; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-            .footer { text-align: center; margin-top: 50px; color: #7f8c8d; font-size: 0.9em; }
+            body { background-color: #f8f9fa; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #333; }
+            .navbar { background-color: #1a252f; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 15px 0; }
+            .navbar-brand { color: #fff !important; font-weight: bold; font-size: 1.5rem; }
+            .nav-link { color: #bdc3c7 !important; transition: color 0.3s ease; }
+            .nav-link:hover, .nav-link.active { color: #1abc9c !important; }
+            .container { margin-top: 40px; margin-bottom: 60px; }
+            
+            /* 精美的文字说明卡片样式 */
+            .theory-box { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 5px solid #3498db; }
+            .theory-box h3 { color: #2c3e50; font-weight: bold; margin-bottom: 20px; }
+            .theory-box h5 { color: #34495e; font-weight: 600; margin-top: 20px; }
+            .theory-box p { line-height: 1.8; font-size: 1.05rem; color: #555; }
+            .highlight-text { color: #e74c3c; font-weight: 600; }
+            
+            .chart-container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+            .footer { text-align: center; margin-top: 50px; padding: 20px 0; border-top: 1px solid #eaeaea; color: #7f8c8d; }
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">🛡️ Energy Intel System</a>
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container-fluid px-5">
+                <a class="navbar-brand" href="index.html">📊 Energy Sector Intelligence</a>
                 <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Overview</a></li>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active fw-bold" href="index.html">Overview</a></li>
                         <li class="nav-item"><a class="nav-link" href="trends.html">Historical Trends</a></li>
                         <li class="nav-item"><a class="nav-link" href="analysis.html">DuPont Analysis</a></li>
+                        <li class="nav-item"><a class="nav-link" href="market_share.html">Market Scale</a></li>
+                        <li class="nav-item"><a class="nav-link" href="efficiency.html">Asset Efficiency</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="container">
             
-    <div class='text-center py-5'>
-        <h1 class='display-4'>Energy Sector Intelligence Dashboard</h1>
-        <p class='lead'>欢迎来到能源行业财务情报中心。本系统提供基于 2018-2025 WRDS 数据的深度财务洞察。</p>
-        <hr class='my-4'>
-        <div class='row mt-5'>
-            <div class='col-md-4'>
-                <div class='card p-3'><h3>357</h3><p>Companies Tracked</p></div>
-            </div>
-            <div class='col-md-4'>
-                <div class='card p-3'><h3>2018-2025</h3><p>Analysis Period</p></div>
-            </div>
-            <div class='col-md-4'>
-                <div class='card p-3'><h3>DuPont</h3><p>Model Integrated</p></div>
-            </div>
+    <div class="theory-box">
+        <h3>核心理论框架：杜邦分析法 (DuPont Analysis)</h3>
+        <p>欢迎来到能源行业财务情报中心。本系统提供基于 2018-2025 WRDS 数据的深度财务洞察。本看板的核心并非随意堆砌图表，其底层架构基于经典的杜邦分析逻辑：</p>
+        <div class="bg-light p-3 text-center rounded my-3" style="font-family: monospace; font-size: 1.2rem;">
+            <strong>ROA = (Net Income / Sales) × (Sales / Total Assets) = Net Margin × Asset Turnover</strong>
         </div>
-        <div class='mt-5'>
-            <a href='trends.html' class='btn btn-primary btn-lg'>View Trends</a>
-            <a href='analysis.html' class='btn btn-outline-secondary btn-lg'>Competitive Analysis</a>
-        </div>
+        <h5>设计的双图并存（Subplots）理念</h5>
+        <p>我们采用了模块化多维度的结构，以解决单一数据维度的局限性：</p>
+        <ul>
+            <li><strong>Part 1：历史趋势 (The Long View)</strong><br>
+                <em>思路</em>：展示 2018-2025 年间的动态变化。<br>
+                <em>深刻理解</em>：财务数据是具有“时间惯性”的。看到 2020 年左右因疫情和油价战导致的剧烈下滑（行业共性），能帮助用户迅速识别出哪些公司恢复得比同行更快。
+            </li>
+            <li class="mt-2"><strong>Part 2：行业定位 (The Dynamic Snapshot)</strong><br>
+                <em>思路</em>：配合底部的年份滑动条。<br>
+                <em>深刻理解</em>：静态的报表是苍白的。当你可以通过 Play 按钮看到气泡在 8 年间左右移动时，你实际上是在观察一个企业的“生命轨迹”——它是变得越来越高效了，还是陷入了利润泥潭？
+            </li>
+        </ul>
+    </div>
+    <div class="row text-center mt-4">
+        <div class="col-md-4"><div class="card p-4 shadow-sm border-0"><h2 class="text-primary">357</h2><p class="text-muted mb-0">Tracked Companies</p></div></div>
+        <div class="col-md-4"><div class="card p-4 shadow-sm border-0"><h2 class="text-success">2018-2025</h2><p class="text-muted mb-0">Time Horizon</p></div></div>
+        <div class="col-md-4"><div class="card p-4 shadow-sm border-0"><h2 class="text-info">DuPont</h2><p class="text-muted mb-0">Core Engine</p></div></div>
     </div>
     
         </div>
         <div class="footer">
-            <p>© 2026 Energy Data Project | Powered by Plotly & GitHub Pages</p>
+            <p>© 2026 Advanced Financial Data Visualization | Powered by WRDS & Plotly</p>
         </div>
     </body>
     </html>
