@@ -1,75 +1,91 @@
 
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="zh-CN">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Overview - Energy Intel</title>
+        <title>概览 | 能源行业财务决策系统</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
-            body { background-color: #f8f9fa; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #333; }
-            .navbar { background-color: #1a252f; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 15px 0; }
-            .navbar-brand { color: #fff !important; font-weight: bold; font-size: 1.5rem; }
-            .nav-link { color: #bdc3c7 !important; transition: color 0.3s ease; }
-            .nav-link:hover, .nav-link.active { color: #1abc9c !important; }
-            .container { margin-top: 40px; margin-bottom: 60px; }
+            :root { --slate-dark: #1e293b; --teal-primary: #14b8a6; --bg-light: #f8fafc; }
+            body { background-color: var(--bg-light); font-family: "Inter", "Microsoft YaHei", sans-serif; color: #334155; }
+            .navbar { background-color: var(--slate-dark); padding: 1rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+            .navbar-brand { font-weight: 800; color: #fff !important; letter-spacing: -0.5px; }
+            .nav-link { color: #94a3b8 !important; margin: 0 10px; transition: all 0.2s; }
+            .nav-link:hover { color: var(--teal-primary) !important; }
+            .border-teal { border-color: var(--teal-primary) !important; }
             
-            /* 精美的文字说明卡片样式 */
-            .theory-box { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 5px solid #3498db; }
-            .theory-box h3 { color: #2c3e50; font-weight: bold; margin-bottom: 20px; }
-            .theory-box h5 { color: #34495e; font-weight: 600; margin-top: 20px; }
-            .theory-box p { line-height: 1.8; font-size: 1.05rem; color: #555; }
-            .highlight-text { color: #e74c3c; font-weight: 600; }
+            .container { margin-top: 3rem; margin-bottom: 5rem; }
+            .report-card { background: white; padding: 2.5rem; border-radius: 1px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+            .report-card h2, .report-card h3 { color: var(--slate-dark); font-weight: 700; margin-bottom: 1.5rem; border-left: 4px solid var(--teal-primary); padding-left: 1rem; }
+            .report-card p { line-height: 1.8; color: #475569; text-align: justify; }
             
-            .chart-container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-            .footer { text-align: center; margin-top: 50px; padding: 20px 0; border-top: 1px solid #eaeaea; color: #7f8c8d; }
+            .metric-box { background: #f1f5f9; padding: 1.5rem; border-radius: 4px; text-align: center; border-top: 3px solid var(--teal-primary); }
+            .chart-frame { background: white; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 4px; }
+            .footer { text-align: center; padding: 3rem 0; color: #94a3b8; font-size: 0.85rem; border-top: 1px solid #e2e8f0; }
+            
+            /* 输入框美化 */
+            #tickerSearchGroup { max-width: 500px; margin-bottom: 2rem; }
+            .btn-teal { background-color: var(--teal-primary); color: white; border: none; }
+            .btn-teal:hover { background-color: #0d9488; color: white; }
         </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container-fluid px-5">
-                <a class="navbar-brand" href="index.html">📊 Energy Sector Intelligence</a>
+                <a class="navbar-brand" href="index.html">ENERGY INTEL PRO</a>
                 <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active fw-bold" href="index.html">Overview</a></li>
-                        <li class="nav-item"><a class="nav-link" href="trends.html">Historical Trends</a></li>
-                        <li class="nav-item"><a class="nav-link" href="analysis.html">DuPont Analysis</a></li>
-                        <li class="nav-item"><a class="nav-link" href="market_share.html">Market Scale</a></li>
-                        <li class="nav-item"><a class="nav-link" href="efficiency.html">Asset Efficiency</a></li>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active fw-bold border-bottom border-3 border-teal" href="index.html">系统概览</a></li>
+                        <li class="nav-item"><a class="nav-link" href="trends.html">盈利趋势分析</a></li>
+                        <li class="nav-item"><a class="nav-link" href="analysis.html">杜邦矩阵定位</a></li>
+                        <li class="nav-item"><a class="nav-link" href="market_share.html">市场份额分布</a></li>
+                        <li class="nav-item"><a class="nav-link" href="efficiency.html">运营效率分布</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="container">
             
-    <div class="theory-box">
-        <h3>核心理论框架：杜邦分析法 (DuPont Analysis)</h3>
-        <p>欢迎来到能源行业财务情报中心。本系统提供基于 2018-2025 WRDS 数据的深度财务洞察。本看板的核心并非随意堆砌图表，其底层架构基于经典的杜邦分析逻辑：</p>
-        <div class="bg-light p-3 text-center rounded my-3" style="font-family: monospace; font-size: 1.2rem;">
-            <strong>ROA = (Net Income / Sales) × (Sales / Total Assets) = Net Margin × Asset Turnover</strong>
+    <div class="report-card">
+        <h2>系统简介：能源行业财务对标与决策支持平台</h2>
+        <p>
+            本平台依托于 <strong>WRDS (Wharton Research Data Services)</strong> 高频财务数据库，旨在为能源行业提供机构级的定量分析模型。
+            通过对 2018 至 2025 会计年度的海量原始凭证进行标准化处理，系统构建了涵盖盈利能力、运营效率及市场竞争格局的多维评价体系。
+        </p>
+        
+        <h3 class="mt-5">目标用户群体</h3>
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="metric-box">
+                    <h5>卖方/买方分析师</h5>
+                    <small>量化追踪行业周期，识别具有超额收益潜力的龙头企业。</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="metric-box">
+                    <h5>企业战略决策层</h5>
+                    <small>对标同业竞争对手的周转效率，优化资本配置与资产负债结构。</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="metric-box">
+                    <h5>学术研究机构</h5>
+                    <small>基于杜邦分析框架进行跨周期实证研究，探讨宏观波动对能源企业的影响。</small>
+                </div>
+            </div>
         </div>
-        <h5>设计的双图并存（Subplots）理念</h5>
-        <p>我们采用了模块化多维度的结构，以解决单一数据维度的局限性：</p>
-        <ul>
-            <li><strong>Part 1：历史趋势 (The Long View)</strong><br>
-                <em>思路</em>：展示 2018-2025 年间的动态变化。<br>
-                <em>深刻理解</em>：财务数据是具有“时间惯性”的。看到 2020 年左右因疫情和油价战导致的剧烈下滑（行业共性），能帮助用户迅速识别出哪些公司恢复得比同行更快。
-            </li>
-            <li class="mt-2"><strong>Part 2：行业定位 (The Dynamic Snapshot)</strong><br>
-                <em>思路</em>：配合底部的年份滑动条。<br>
-                <em>深刻理解</em>：静态的报表是苍白的。当你可以通过 Play 按钮看到气泡在 8 年间左右移动时，你实际上是在观察一个企业的“生命轨迹”——它是变得越来越高效了，还是陷入了利润泥潭？
-            </li>
-        </ul>
-    </div>
-    <div class="row text-center mt-4">
-        <div class="col-md-4"><div class="card p-4 shadow-sm border-0"><h2 class="text-primary">357</h2><p class="text-muted mb-0">Tracked Companies</p></div></div>
-        <div class="col-md-4"><div class="card p-4 shadow-sm border-0"><h2 class="text-success">2018-2025</h2><p class="text-muted mb-0">Time Horizon</p></div></div>
-        <div class="col-md-4"><div class="card p-4 shadow-sm border-0"><h2 class="text-info">DuPont</h2><p class="text-muted mb-0">Core Engine</p></div></div>
+
+        <h3 class="mt-5">核心功能与价值</h3>
+        <p>
+            本系统通过 <strong>多维时空建模 (Multi-dimensional Spatio-temporal Modeling)</strong> 解决传统财务报表存在的滞后性与碎片化问题。
+            用户可直观监测全球顶尖能源供应商在不同宏观经济周期下的财务弹性，利用动态杜邦矩阵实现从“静态结果”向“动态轨迹”的认知转换。
+        </p>
     </div>
     
         </div>
         <div class="footer">
-            <p>© 2026 Advanced Financial Data Visualization | Powered by WRDS & Plotly</p>
+            <p>数据来源：WRDS (Compustat North America) | 统计口径：标准工业分类 (SIC) | 生成日期：2026-04</p>
         </div>
     </body>
     </html>
