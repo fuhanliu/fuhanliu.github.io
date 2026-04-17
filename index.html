@@ -3,46 +3,37 @@
     <html lang="zh">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>战略概览 | Energy Intel Pro</title>
+        <title>战略总览 | Energy Intel Pro</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
-            :root { --primary: #2c3e50; --accent: #3498db; --success: #27ae60; --dark-bg: #f4f7f9; }
-            body { background: var(--dark-bg); font-family: 'Inter', system-ui, -apple-system, sans-serif; color: #34495e; line-height: 1.7; }
+            :root { --primary: #1e272e; --accent: #3498db; --success: #27ae60; }
+            body { background: #f1f2f6; font-family: 'Segoe UI', system-ui; color: #2f3542; }
+            .navbar { background: var(--primary); padding: 1.2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+            .navbar-brand { font-weight: 800; color: #fff !important; }
+            .nav-link { color: #ced6e0 !important; margin: 0 12px; }
+            .nav-link.active { color: #1abc9c !important; border-bottom: 2px solid #1abc9c; }
             
-            /* 导航栏 */
-            .navbar { background: var(--primary); padding: 1.2rem 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-            .navbar-brand { font-weight: 800; font-size: 1.4rem; color: #fff !important; letter-spacing: -0.5px; }
-            .nav-link { color: #aab7c4 !important; font-size: 0.95rem; margin: 0 10px; transition: 0.3s; }
-            .nav-link:hover, .nav-link.active { color: #1abc9c !important; }
-            
-            /* 专业理论卡片 */
             .theory-box { 
                 background: white; padding: 45px; border-radius: 20px; 
-                box-shadow: 0 12px 35px rgba(0,0,0,0.06); margin-bottom: 35px; 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.06); margin-bottom: 35px; 
                 border-left: 10px solid var(--accent); 
             }
-            .theory-box h2 { font-weight: 800; color: var(--primary); margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
-            .theory-box h4 { font-weight: 700; color: #2c3e50; margin-top: 25px; margin-bottom: 15px; }
-            .theory-box p { font-size: 1.05rem; text-align: justify; }
-            .theory-box li { margin-bottom: 8px; }
-
-            /* 象限卡片 */
-            .q-card { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #eef2f6; transition: 0.4s; height: 100%; }
-            .q-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+            .theory-box h2 { font-weight: 800; color: var(--primary); border-bottom: 2px solid #f1f2f6; padding-bottom: 15px; margin-bottom: 25px; }
+            .theory-box h4 { font-weight: 700; margin-top: 30px; color: #34495e; }
             
-            /* 图表容器 */
-            .chart-frame { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.04); }
-            
-            /* 搜索框样式 */
-            .search-section { 
-                background: #ebf2f7; padding: 25px; border-radius: 15px; border: 1px solid #d6e0e9; 
-                max-width: 650px; margin-top: 30px; 
+            .search-container {
+                background: #eef2f7; padding: 25px; border-radius: 15px; margin-top: 30px;
+                border: 1px solid #d1d8e0; max-width: 650px;
             }
+            
+            .chart-frame { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.04); }
+            
+            .q-card { background: #fff; padding: 20px; border-radius: 12px; border: 1px solid #eef2f6; transition: 0.4s; height: 100%; }
+            .q-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
 
-            [lang-en] { display: none; }
-            .lang-en-active [lang-zh] { display: none; }
-            .lang-en-active [lang-en] { display: block; }
+            /* 绝对拦截：中文与英文的彻底隔离 */
+            body.lang-zh-active [lang-en] { display: none !important; }
+            body.lang-en-active [lang-zh] { display: none !important; }
         </style>
     </head>
     <body class="lang-zh-active">
@@ -50,57 +41,54 @@
             <div class="container-fluid">
                 <a class="navbar-brand">ENERGY INTEL PRO</a>
                 <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav ms-auto align-items-center">
-                        <li class="nav-item"><a class="nav-link active fw-bold" href="index.html" data-zh="战略概览" data-en="Strategy Overview">战略概览</a></li>
-                        <li class="nav-item"><a class="nav-link " href="trends.html" data-zh="盈利周期" data-en="Profit Cycles">盈利周期</a></li>
-                        <li class="nav-item"><a class="nav-link " href="analysis.html" data-zh="杜邦矩阵" data-en="DuPont Matrix">杜邦矩阵</a></li>
-                        <li class="nav-item"><a class="nav-link " href="market_share.html" data-zh="格局分布" data-en="Market Share">格局分布</a></li>
-                        <li class="nav-item"><a class="nav-link " href="efficiency.html" data-zh="效能统计" data-en="Efficiency Stats">效能统计</a></li>
-                        <li class="nav-item ms-4"><button class="btn btn-sm btn-outline-light px-3" onclick="toggleLang()" style="border-radius: 20px;">ZH / EN</button></li>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active fw-bold" href="index.html"><span lang-zh>战略总览</span><span lang-en>Overview</span></a></li>
+                        <li class="nav-item"><a class="nav-link " href="trends.html"><span lang-zh>利润趋势</span><span lang-en>Trends</span></a></li>
+                        <li class="nav-item"><a class="nav-link " href="analysis.html"><span lang-zh>杜邦矩阵</span><span lang-en>DuPont Matrix</span></a></li>
+                        <li class="nav-item"><a class="nav-link " href="market_share.html"><span lang-zh>市场结构</span><span lang-en>Market Share</span></a></li>
+                        <li class="nav-item"><a class="nav-link " href="efficiency.html"><span lang-zh>营运统计</span><span lang-en>Efficiency</span></a></li>
+                        <li class="nav-item ms-3"><button class="btn btn-outline-info btn-sm" onclick="toggleLang()">ZH / EN</button></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="container mt-5 mb-5">
     <div class="theory-box">
-        <h2 data-zh="能源行业战略决策系统 (ESD-SS)" data-en="Energy Strategy Decision Support System">能源行业战略决策系统 (ESD-SS)</h2>
+        <h2><span lang-zh>能源行业战略分析系统 (ESD-SS)</span><span lang-en>Energy Strategy Decision Support System (ESD-SS)</span></h2>
         <div lang-zh>
-            <h4>🎯 目标用户</h4>
-            <p>本平台专为<strong>能源行业资深分析师、买方机构研究员及企业 CFO 办公室</strong>定制。我们旨在将海量的财务原始数据转化为具有高度解释力的战略可视化模型，辅助进行资本配置决策与竞争对标分析。</p>
-            <h4>📊 数据范围与科学性</h4>
-            <p>数据源自 <strong>WRDS COMPUSTAT</strong> 数据库，涵盖了全球主要能源巨头过去 8 年的年度审计财务报表。通过对销售净利率、资产周转率及 ROA 的多维清洗，确保每一项指标都能真实反映企业的营运本质。</p>
-            <h4>💡 核心分析模块</h4>
+            <h4>🎯 目标用户 (Target Audience)</h4>
+            <p>本系统专为<strong>机构投资者、资深行业研究员以及企业 CFO 办公室</strong>定制。旨在将海量能源财报数据转化为高维动态模型，辅助资本配置决策与竞争格局研判。</p>
+            <h4>📊 数据来源 (Data Source)</h4>
+            <p>核心数据提取自 <strong>WRDS COMPUSTAT</strong> 审计报表库，覆盖全球能源巨头 2018-2025 年度指标。通过多维清洗确保了销售净利率与资产周转率的统计真实性。</p>
+            <h4>💡 核心功能概览 (Functionalities)</h4>
             <ul>
-                <li><strong>盈利周期：</strong> 揭示企业在油价波动与能源转型中的盈利韧性。</li>
-                <li><strong>杜邦矩阵：</strong> 解构资产回报率驱动力，识别企业的竞争护城河（成本领先 vs. 运营卓越）。</li>
-                <li><strong>格局分布：</strong> 可视化市场集中度，通过穿透式档案识别潜在的并购目标或竞争威胁。</li>
-                <li><strong>效能统计：</strong> 建立全行业效率基准，定位企业在营运效率分布中的百分位。</li>
+                <li><strong>利润趋势：</strong> 追踪行业前十强在油价周期中的盈利韧性。</li>
+                <li><strong>杜邦矩阵：</strong> 解构 ROA 核心驱动力，识别“低成本”与“高周转”两种不同的竞争策略。</li>
+                <li><strong>市场结构：</strong> 可视化营收权重，支持点击穿透获取企业详细 SIC 行业分类与地理档案。</li>
+                <li><strong>营运统计：</strong> 行业资产效能对标，定位企业在资产利用率分布中的水位。</li>
             </ul>
         </div>
         <div lang-en>
             <h4>🎯 Target Audience</h4>
-            <p>Tailored for <strong>senior energy analysts, institutional investors, and CFO offices</strong>. We transform raw financials into high-fidelity strategic models to support capital allocation and competitive benchmarking.</p>
-            <h4>📊 Data Scope & Rigor</h4>
-            <p>Powered by <strong>WRDS COMPUSTAT</strong>, covering 8 years of audited financials for global energy giants. Our data pipeline ensures that Net Margin, Turnover, and ROA accurately reflect operational reality.</p>
-            <h4>💡 Core Modules</h4>
+            <p>Designed for <strong>institutional investors, energy analysts, and CFO offices</strong> to transform raw financial data into strategic decision-making models.</p>
+            <h4>📊 Data Source</h4>
+            <p>Sourced from <strong>WRDS COMPUSTAT</strong>, covering global energy giants' financials from 2018 to 2025 with rigorous data cleaning.</p>
+            <h4>💡 Key Modules</h4>
             <ul>
-                <li><strong>Profit Cycles:</strong> Reveals earnings resilience amidst price volatility and energy transition.</li>
-                <li><strong>DuPont Matrix:</strong> Decomposes ROA drivers to identify competitive moats (Cost Leadership vs. Operational Excellence).</li>
-                <li><strong>Market Share:</strong> Visualizes concentration with drill-down profiles to identify M&A targets or threats.</li>
-                <li><strong>Efficiency Stats:</strong> Establishes industry benchmarks and identifies decile rankings for asset productivity.</li>
+                <li><strong>Trends:</strong> Track Top 10 firms' earnings resilience across energy price cycles.</li>
+                <li><strong>Matrix:</strong> Decompose ROA drivers to identify "Cost Leadership" vs "Asset Velocity" strategies.</li>
+                <li><strong>Market:</strong> Visualize revenue concentration with drill-down profiles and SIC mapping.</li>
+                <li><strong>Efficiency:</strong> Benchmark asset productivity against industry-wide deciles.</li>
             </ul>
         </div>
     </div>
     </div>
         <script>
             function toggleLang() {
-                const body = document.body;
-                const isZh = body.classList.contains('lang-zh-active');
-                if(isZh) {
-                    body.classList.replace('lang-zh-active', 'lang-en-active');
-                } else {
-                    body.classList.replace('lang-en-active', 'lang-zh-active');
-                }
+                const b = document.body;
+                const isZh = b.classList.contains('lang-zh-active');
+                b.classList.toggle('lang-zh-active', !isZh);
+                b.classList.toggle('lang-en-active', isZh);
             }
         </script>
     </body>
