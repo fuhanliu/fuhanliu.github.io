@@ -1,92 +1,86 @@
 
     <!DOCTYPE html>
-    <html lang="zh-CN">
+    <html lang="zh">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>概览 | 能源行业财务决策系统</title>
+        <title>概览 | Energy Intel Pro</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
-            :root { --slate-dark: #1e293b; --teal-primary: #14b8a6; --bg-light: #f8fafc; }
-            body { background-color: var(--bg-light); font-family: "Inter", "Microsoft YaHei", sans-serif; color: #334155; }
-            .navbar { background-color: var(--slate-dark); padding: 1rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-            .navbar-brand { font-weight: 800; color: #fff !important; letter-spacing: -0.5px; }
-            .nav-link { color: #94a3b8 !important; margin: 0 10px; transition: all 0.2s; }
-            .nav-link:hover { color: var(--teal-primary) !important; }
-            .border-teal { border-color: var(--teal-primary) !important; }
+            :root { --slate-900: #0f172a; --teal-500: #14b8a6; --slate-200: #e2e8f0; }
+            body { background-color: #f8fafc; font-family: 'Inter', 'Microsoft YaHei', sans-serif; color: #1e293b; }
+            .navbar { background-color: var(--slate-900); padding: 1rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+            .navbar-brand { font-weight: 800; color: #fff !important; }
+            .nav-link { color: #94a3b8 !important; margin: 0 12px; transition: 0.2s; font-size: 0.95rem; }
+            .nav-link.active { color: var(--teal-500) !important; border-bottom: 2px solid var(--teal-500); }
             
-            .container { margin-top: 3rem; margin-bottom: 5rem; }
-            .report-card { background: white; padding: 2.5rem; border-radius: 1px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 2rem; }
-            .report-card h2, .report-card h3 { color: var(--slate-dark); font-weight: 700; margin-bottom: 1.5rem; border-left: 4px solid var(--teal-primary); padding-left: 1rem; }
-            .report-card p { line-height: 1.8; color: #475569; text-align: justify; }
+            .lang-toggle { background: transparent; border: 1px solid var(--teal-500); color: var(--teal-500); border-radius: 4px; padding: 4px 12px; font-size: 0.8rem; cursor: pointer; transition: 0.2s; }
+            .lang-toggle:hover { background: var(--teal-500); color: #fff; }
+
+            .report-card { background: white; padding: 2.5rem; border-radius: 2px; border: 1px solid var(--slate-200); margin-bottom: 2.5rem; }
+            .report-card h2 { font-weight: 700; color: var(--slate-900); margin-bottom: 1.5rem; border-left: 5px solid var(--teal-500); padding-left: 1.2rem; }
+            .report-card p { line-height: 1.8; text-align: justify; color: #334155; }
             
-            .metric-box { background: #f1f5f9; padding: 1.5rem; border-radius: 4px; text-align: center; border-top: 3px solid var(--teal-primary); }
-            .chart-frame { background: white; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 4px; }
-            .footer { text-align: center; padding: 3rem 0; color: #94a3b8; font-size: 0.85rem; border-top: 1px solid #e2e8f0; }
+            .quadrant-box { background: #f1f5f9; padding: 1.5rem; border-radius: 4px; margin-top: 1.5rem; font-size: 0.9rem; border-top: 3px solid var(--teal-500); }
+            .quadrant-title { font-weight: 700; color: var(--teal-500); display: block; margin-bottom: 0.5rem; }
             
-            /* 输入框美化 */
-            #tickerSearchGroup { max-width: 500px; margin-bottom: 2rem; }
-            .btn-teal { background-color: var(--teal-primary); color: white; border: none; }
-            .btn-teal:hover { background-color: #0d9488; color: white; }
+            .chart-frame { background: white; padding: 1rem; border: 1px solid var(--slate-200); border-radius: 4px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+            [lang-en] { display: none; }
         </style>
     </head>
-    <body>
+    <body class="lang-zh-active">
         <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container-fluid px-5">
                 <a class="navbar-brand" href="index.html">ENERGY INTEL PRO</a>
                 <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active fw-bold border-bottom border-3 border-teal" href="index.html">系统概览</a></li>
-                        <li class="nav-item"><a class="nav-link" href="trends.html">盈利趋势分析</a></li>
-                        <li class="nav-item"><a class="nav-link" href="analysis.html">杜邦矩阵定位</a></li>
-                        <li class="nav-item"><a class="nav-link" href="market_share.html">市场份额分布</a></li>
-                        <li class="nav-item"><a class="nav-link" href="efficiency.html">运营效率分布</a></li>
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link active fw-bold" href="index.html" data-zh="概览" data-en="Overview">概览</a></li>
+                        <li class="nav-item"><a class="nav-link " href="trends.html" data-zh="盈利趋势" data-en="Trends">盈利趋势</a></li>
+                        <li class="nav-item"><a class="nav-link " href="analysis.html" data-zh="杜邦矩阵" data-en="DuPont">杜邦矩阵</a></li>
+                        <li class="nav-item"><a class="nav-link " href="market_share.html" data-zh="市场分布" data-en="Market">市场分布</a></li>
+                        <li class="nav-item"><a class="nav-link " href="efficiency.html" data-zh="运营效率" data-en="Efficiency">运营效率</a></li>
+                        <li class="nav-item ms-3">
+                            <button class="lang-toggle" onclick="toggleLang()">中 / EN</button>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="container">
-            
+        <div class="container mt-5">
     <div class="report-card">
-        <h2>系统简介：能源行业财务对标与决策支持平台</h2>
-        <p>
-            本平台依托于 <strong>WRDS (Wharton Research Data Services)</strong> 高频财务数据库，旨在为能源行业提供机构级的定量分析模型。
-            通过对 2018 至 2025 会计年度的海量原始凭证进行标准化处理，系统构建了涵盖盈利能力、运营效率及市场竞争格局的多维评价体系。
-        </p>
-        
-        <h3 class="mt-5">目标用户群体</h3>
-        <div class="row g-4 text-center">
-            <div class="col-md-4">
-                <div class="metric-box">
-                    <h5>卖方/买方分析师</h5>
-                    <small>量化追踪行业周期，识别具有超额收益潜力的龙头企业。</small>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="metric-box">
-                    <h5>企业战略决策层</h5>
-                    <small>对标同业竞争对手的周转效率，优化资本配置与资产负债结构。</small>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="metric-box">
-                    <h5>学术研究机构</h5>
-                    <small>基于杜邦分析框架进行跨周期实证研究，探讨宏观波动对能源企业的影响。</small>
-                </div>
-            </div>
+        <h2 data-zh="能源行业财务决策支持系统" data-en="Energy Sector Financial Intelligence System">能源行业财务决策支持系统</h2>
+        <div lang-zh>
+            <p>本平台是专为能源行业分析师、企业战略部门及学术研究人员设计的深度定量分析工具。系统基于 WRDS 权威财务数据，通过动态建模技术，将复杂的财务报表转化为可交互的竞争情报。</p>
+            <p><strong>核心商业价值：</strong> 我们通过标准化处理全球能源巨头的底层财务数据，帮助用户在波动剧烈的大宗商品环境下，通过“利润-效率”双维度模型快速识别企业的经营本质与潜在风险。</p>
         </div>
-
-        <h3 class="mt-5">核心功能与价值</h3>
-        <p>
-            本系统通过 <strong>多维时空建模 (Multi-dimensional Spatio-temporal Modeling)</strong> 解决传统财务报表存在的滞后性与碎片化问题。
-            用户可直观监测全球顶尖能源供应商在不同宏观经济周期下的财务弹性，利用动态杜邦矩阵实现从“静态结果”向“动态轨迹”的认知转换。
-        </p>
+        <div lang-en>
+            <p>This platform is a specialized quantitative analysis tool for energy analysts and corporate strategy departments. Leveraging authoritative WRDS financial data, it transforms complex statements into interactive competitive intelligence.</p>
+            <p><strong>Business Value:</strong> By standardizing global energy giants' data, we enable users to identify operational essence and risks using the "Profit-Efficiency" dual-dimension model.</p>
+        </div>
     </div>
-    
-        </div>
-        <div class="footer">
-            <p>数据来源：WRDS (Compustat North America) | 统计口径：标准工业分类 (SIC) | 生成日期：2026-04</p>
-        </div>
+    </div>
+        <script>
+            function toggleLang() {
+                const isZh = document.body.classList.contains('lang-zh-active');
+                if(isZh) {
+                    document.body.classList.replace('lang-zh-active', 'lang-en-active');
+                    document.querySelectorAll('[data-en]').forEach(el => {
+                        if(el.tagName === 'INPUT') el.placeholder = el.getAttribute('data-en');
+                        else el.innerText = el.getAttribute('data-en');
+                    });
+                    document.querySelectorAll('[lang-zh]').forEach(el => el.style.display = 'none');
+                    document.querySelectorAll('[lang-en]').forEach(el => el.style.display = 'block');
+                } else {
+                    document.body.classList.replace('lang-en-active', 'lang-zh-active');
+                    document.querySelectorAll('[data-zh]').forEach(el => {
+                        if(el.tagName === 'INPUT') el.placeholder = el.getAttribute('data-zh');
+                        else el.innerText = el.getAttribute('data-zh');
+                    });
+                    document.querySelectorAll('[lang-zh]').forEach(el => el.style.display = 'block');
+                    document.querySelectorAll('[lang-en]').forEach(el => el.style.display = 'none');
+                }
+            }
+        </script>
     </body>
     </html>
     
