@@ -3,82 +3,61 @@
     <html lang="zh">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>概览 | Energy Intel Pro</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
-            :root { --slate-900: #0f172a; --teal-500: #14b8a6; --slate-200: #e2e8f0; }
-            body { background-color: #f8fafc; font-family: 'Inter', 'Microsoft YaHei', sans-serif; color: #1e293b; }
-            .navbar { background-color: var(--slate-900); padding: 1rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+            :root { --primary: #2c3e50; --accent: #3498db; --success: #27ae60; --warning: #f39c12; --danger: #e74c3c; }
+            body { background: #f8f9fa; font-family: 'Segoe UI', system-ui; }
+            .navbar { background: var(--primary); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
             .navbar-brand { font-weight: 800; color: #fff !important; }
-            .nav-link { color: #94a3b8 !important; margin: 0 12px; transition: 0.2s; font-size: 0.95rem; }
-            .nav-link.active { color: var(--teal-500) !important; border-bottom: 2px solid var(--teal-500); }
+            .nav-link { color: #bdc3c7 !important; margin: 0 10px; }
+            .nav-link.active { color: #1abc9c !important; border-bottom: 2px solid #1abc9c; }
             
-            .lang-toggle { background: transparent; border: 1px solid var(--teal-500); color: var(--teal-500); border-radius: 4px; padding: 4px 12px; font-size: 0.8rem; cursor: pointer; transition: 0.2s; }
-            .lang-toggle:hover { background: var(--teal-500); color: #fff; }
-
-            .report-card { background: white; padding: 2.5rem; border-radius: 2px; border: 1px solid var(--slate-200); margin-bottom: 2.5rem; }
-            .report-card h2 { font-weight: 700; color: var(--slate-900); margin-bottom: 1.5rem; border-left: 5px solid var(--teal-500); padding-left: 1.2rem; }
-            .report-card p { line-height: 1.8; text-align: justify; color: #334155; }
+            /* 用户喜爱的理论卡片风格 */
+            .theory-box { 
+                background: white; padding: 35px; border-radius: 15px; 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 30px; 
+                border-left: 8px solid var(--accent); 
+            }
+            .theory-box h2 { font-weight: 800; color: var(--primary); margin-bottom: 20px; }
             
-            .quadrant-box { background: #f1f5f9; padding: 1.5rem; border-radius: 4px; margin-top: 1.5rem; font-size: 0.9rem; border-top: 3px solid var(--teal-500); }
-            .quadrant-title { font-weight: 700; color: var(--teal-500); display: block; margin-bottom: 0.5rem; }
+            /* 四大象限卡片设计 */
+            .q-card { background: #fff; padding: 20px; border-radius: 10px; border: 1px solid #eee; transition: 0.3s; height: 100%; }
+            .q-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+            .q-title { font-weight: bold; font-size: 1.1rem; margin-bottom: 10px; display: block; }
             
-            .chart-frame { background: white; padding: 1rem; border: 1px solid var(--slate-200); border-radius: 4px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+            .chart-frame { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
             [lang-en] { display: none; }
         </style>
     </head>
     <body class="lang-zh-active">
         <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container-fluid px-5">
-                <a class="navbar-brand" href="index.html">ENERGY INTEL PRO</a>
+                <a class="navbar-brand">ENERGY INTEL PRO</a>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item"><a class="nav-link active fw-bold" href="index.html" data-zh="概览" data-en="Overview">概览</a></li>
-                        <li class="nav-item"><a class="nav-link " href="trends.html" data-zh="盈利趋势" data-en="Trends">盈利趋势</a></li>
-                        <li class="nav-item"><a class="nav-link " href="analysis.html" data-zh="杜邦矩阵" data-en="DuPont">杜邦矩阵</a></li>
-                        <li class="nav-item"><a class="nav-link " href="market_share.html" data-zh="市场分布" data-en="Market">市场分布</a></li>
-                        <li class="nav-item"><a class="nav-link " href="efficiency.html" data-zh="运营效率" data-en="Efficiency">运营效率</a></li>
-                        <li class="nav-item ms-3">
-                            <button class="lang-toggle" onclick="toggleLang()">中 / EN</button>
-                        </li>
+                        <li class="nav-item"><a class="nav-link " href="trends.html" data-zh="趋势" data-en="Trends">趋势</a></li>
+                        <li class="nav-item"><a class="nav-link " href="analysis.html" data-zh="矩阵" data-en="Matrix">矩阵</a></li>
+                        <li class="nav-item"><a class="nav-link " href="market_share.html" data-zh="市场" data-en="Market">市场</a></li>
+                        <li class="nav-item"><a class="nav-link " href="efficiency.html" data-zh="效率" data-en="Efficiency">效率</a></li>
+                        <li class="nav-item ms-3"><button class="btn btn-outline-info btn-sm" onclick="toggleLang()">中 / EN</button></li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="container mt-5">
-    <div class="report-card">
-        <h2 data-zh="能源行业财务决策支持系统" data-en="Energy Sector Financial Intelligence System">能源行业财务决策支持系统</h2>
-        <div lang-zh>
-            <p>本平台是专为能源行业分析师、企业战略部门及学术研究人员设计的深度定量分析工具。系统基于 WRDS 权威财务数据，通过动态建模技术，将复杂的财务报表转化为可交互的竞争情报。</p>
-            <p><strong>核心商业价值：</strong> 我们通过标准化处理全球能源巨头的底层财务数据，帮助用户在波动剧烈的大宗商品环境下，通过“利润-效率”双维度模型快速识别企业的经营本质与潜在风险。</p>
-        </div>
-        <div lang-en>
-            <p>This platform is a specialized quantitative analysis tool for energy analysts and corporate strategy departments. Leveraging authoritative WRDS financial data, it transforms complex statements into interactive competitive intelligence.</p>
-            <p><strong>Business Value:</strong> By standardizing global energy giants' data, we enable users to identify operational essence and risks using the "Profit-Efficiency" dual-dimension model.</p>
-        </div>
-    </div>
-    </div>
+        <div class="container mt-5"><div class="theory-box">
+        <h2 data-zh="能源财务分析引擎" data-en="Financial Intelligence Engine">能源财务分析引擎</h2>
+        <div lang-zh><p>本系统采用杜邦分析法作为核心架构，将复杂的营收数据拆解为利润维度与效率维度。旨在帮助机构投资者识别全球能源市场的阿尔法机会。</p></div>
+        <div lang-en><p>Institutional-grade engine based on DuPont Analysis, decomposing revenue into profit and efficiency dimensions.</p></div>
+    </div></div>
         <script>
             function toggleLang() {
                 const isZh = document.body.classList.contains('lang-zh-active');
-                if(isZh) {
-                    document.body.classList.replace('lang-zh-active', 'lang-en-active');
-                    document.querySelectorAll('[data-en]').forEach(el => {
-                        if(el.tagName === 'INPUT') el.placeholder = el.getAttribute('data-en');
-                        else el.innerText = el.getAttribute('data-en');
-                    });
-                    document.querySelectorAll('[lang-zh]').forEach(el => el.style.display = 'none');
-                    document.querySelectorAll('[lang-en]').forEach(el => el.style.display = 'block');
-                } else {
-                    document.body.classList.replace('lang-en-active', 'lang-zh-active');
-                    document.querySelectorAll('[data-zh]').forEach(el => {
-                        if(el.tagName === 'INPUT') el.placeholder = el.getAttribute('data-zh');
-                        else el.innerText = el.getAttribute('data-zh');
-                    });
-                    document.querySelectorAll('[lang-zh]').forEach(el => el.style.display = 'block');
-                    document.querySelectorAll('[lang-en]').forEach(el => el.style.display = 'none');
-                }
+                document.body.classList.toggle('lang-zh-active', !isZh);
+                document.querySelectorAll('[data-zh]').forEach(el => el.innerText = el.getAttribute(isZh ? 'data-en' : 'data-zh'));
+                document.querySelectorAll('[lang-zh]').forEach(el => el.style.display = isZh ? 'none' : 'block');
+                document.querySelectorAll('[lang-en]').forEach(el => el.style.display = isZh ? 'block' : 'none');
             }
         </script>
     </body>
