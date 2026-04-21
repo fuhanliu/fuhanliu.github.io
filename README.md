@@ -1,4 +1,4 @@
-# Energy Industry Financial Performance Dashboard (2014-2023)
+# Energy Industry Financial Performance Dashboard (2018-2025)
 
 ## Project Overview
 This project is an interactive data product designed to analyze the financial health and operational efficiency of major global energy companies (e.g., ExxonMobil, Chevron, BP). By utilizing the DuPont Analysis framework, the tool visualizes key metrics such as **Net Profit Margin**, **Asset Turnover**, and **Return on Assets (ROA)** to provide insights into corporate performance trends over a decade.
@@ -15,7 +15,7 @@ This project was developed as part of the **ACC102: Python Data Product** assign
 ## Data Source
 [cite_start]The analysis is based on financial data retrieved from **WRDS (Wharton Research Data Services)**[cite: 146, 148].
 - **Dataset**: `wrds_energy_data.csv`
-- **Timeframe**: 2014 – 2023
+- **Timeframe**: 2018 – 2025
 - **Focus**: Energy sector firms categorized by SIC codes.
 
 ## Technical Requirements & Installation
