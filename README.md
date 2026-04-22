@@ -1,50 +1,70 @@
-# Energy Industry Financial Performance Dashboard (2018-2025)
+# Energy Strategy Decision Support System (ESD-SS)
 
-## Project Overview
-This project is an interactive data product designed to analyze the financial health and operational efficiency of major global energy companies (e.g., ExxonMobil, Chevron, BP). By utilizing the DuPont Analysis framework, the tool visualizes key metrics such as **Net Profit Margin**, **Asset Turnover**, and **Return on Assets (ROA)** to provide insights into corporate performance trends over a decade.
+[](https://www.python.org/)
+[](https://plotly.com/)
+[](https://www.xjtlu.edu.cn/)
 
-This project was developed as part of the **ACC102: Python Data Product** assignment at Xi'an Jiaotong-Liverpool University.
+## 📖 Executive Summary
 
-## Key Features
-- **Integrated Dashboard**: A high-level overview of industry performance and key rankings.
-- **Interactive Profitability Analysis**: Visualizes Net Margin trends with a dynamic year slider.
-- **Efficiency Mapping**: Scatters companies based on their Asset Turnover vs. Net Margin to identify business models.
-- **Comparative Analysis**: Side-by-side performance comparison for specific industry leaders.
-- **Raw Data Explorer**: A searchable and filterable table of the underlying financial dataset.
+The **Energy Strategy Decision Support System (ESD-SS)** is a high-performance analytical platform engineered for financial analysts, institutional investors, and strategic planners.
 
-## Data Source
-[cite_start]The analysis is based on financial data retrieved from **WRDS (Wharton Research Data Services)**[cite: 146, 148].
-- **Dataset**: `wrds_energy_data.csv`
-- **Timeframe**: 2018 – 2025
-- **Focus**: Energy sector firms categorized by SIC codes.
+By leveraging audited financial data from global energy leaders (including XOM, CVX, BP, and SHEL), the system deconstructs corporate performance through the **DuPont Analysis framework**. It provides a rigorous, multi-dimensional evaluation of capital productivity and operational efficiency across the global energy landscape from **2018 to 2025**.
 
-## Technical Requirements & Installation
-[cite_start]To run the analysis and generate the interactive HTML reports, you need Python 3.x and the following libraries:
+-----
+
+## ⚡ Technical Advantages & Professional Value
+
+This system is designed to bridge the gap between raw financial data and executive-level strategy:
+
+  * **Integrated Single-View Architecture**: The dashboard utilizes a **Single-Page Application (SPA)** logic. All critical modules—including Profitability Cycles, the DuPont Matrix, and Market Concentration—are housed within a single, responsive interface, allowing for instantaneous data exploration without page reloads.
+  * **One-Click Automated Deployment**: Engineered for efficiency, the system features a fully automated workflow. Upon execution, the backend handles complex data cleaning and SIC industry mapping before **automatically launching** the interactive dashboard in your default browser.
+  * **High-Performance Interactivity**: Powered by the Plotly engine, the system supports zero-latency filtering and **live ticker searching**. This allows users to pinpoint specific companies and visualize their position against industry benchmarks in real-time.
+  * **Sector-Specific Data Rigor**: Built-in logic filters out fiscal anomalies and non-operating distortions, ensuring that metrics like **Asset Turnover** and **Net Margin** reflect the true operational reality of the energy sector.
+
+-----
+
+## 📊 Strategic Analysis Modules
+
+  * **DuPont Dynamic Matrix**: Deconstructs Return on Assets (ROA) to identify strategic drivers:
+    $$ROA = \text{Net Margin} \times \text{Asset Turnover}$$
+    Distinguishes between **Premium-driven** (High Margin) and **Volume-driven** (High Efficiency) business models.
+  * **Market Structure Explorer**: A treemap visualization of revenue concentration. Includes **drill-down functionality** to access detailed SIC industry profiles and HQ locations for each firm.
+  * **Operational Benchmarking**: Statistical distributions (Box plots) that locate corporate asset productivity within industry deciles, highlighting "Alpha" opportunities.
+
+-----
+
+## 🚀 Usage Instructions
+
+### Prerequisites
+
+The following Python libraries are required for data processing and visualization:
 
 ```bash
 pip install pandas plotly
 ```
-## How to Run
-Clone this repository to your local machine.
-Ensure the wrds_energy_data.csv file is in the same directory as the script.
-Execute the Python notebook Untitled.ipynb.
-The script will automatically generate five HTML files representing the product pages:
 
-index.html (Strategic Overview)
+### Execution Steps
 
-trends.html (Profitability Cycles)
+1.  Ensure the source file `wrds_energy_data.csv` is located in the same directory as the notebook.
+2.  Open **`GlobalEnergy.ipynb`** in your preferred environment (Jupyter Notebook, JupyterLab, or VS Code).
+3.  **Run All Cells**: The script will process the WRDS dataset, generate a local `index.html` report, and **automatically open the interactive dashboard** in your system's default web browser.
 
-analysis.html (DuPont Dynamic Matrix)
+-----
 
-market_share.html (Market Landscape)
+## 📝 Professional Disclosure & Compliance
 
-efficiency.html (Operational Statistics)
+### Analytical Limitations
 
-## Analytical Insights
-The tool identifies whether a company’s ROA is driven primarily by high-profit margins (Profitability-driven) or rapid asset turnover (Efficiency-driven). By deconstructing ROA into these two levers, the product offers a deep dive into the strategic positioning and capital productivity of energy giants across different market cycles.
+  * **Reporting Lag**: Insights are derived from audited annual and quarterly filings (WRDS Compustat), which contain a standard reporting delay and may not capture intraday geopolitical price volatility.
+  * **Data Normalization**: Net Margins are capped at $[-50\%, 50\%]$ to ensure that extreme, one-time corporate restructuring events do not skew industry-wide averages.
 
-Developed by: Fuhan Liu
+### Methodology & AI Disclosure
 
-Student ID: 2468474
+  * **AI Integration**: Generative AI was employed to optimize the frontend Bootstrap UI and refine the JavaScript event listeners for the real-time search functionality.
+  * **Originality**: All core financial modeling, data cleaning pipelines, and industry mapping frameworks were independently designed and implemented by the author.
 
-Submission Date: April 2026
+-----
+
+**Author:** Fuhan Liu | **Student ID:** 2468474  
+**Project:** ACC102 Mini Assignment - International Business School Suzhou (IBSS)  
+**Date:** April 2026
